@@ -6,4 +6,10 @@
     "noImplicitAny": false,
     "strict": false
   },
+
+  "vueCompilerOptions": {
+    "plugins": [
+      "@volar/vue-language-plugin-pug"
+    ]
+  }
 }

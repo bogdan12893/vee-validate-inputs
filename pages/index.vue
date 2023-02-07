@@ -1,4 +1,3 @@
 <template lang="pug">
-NuxtLayout
-  NuxtPage
+h1 Vee Validate Inputs examples
 </template>

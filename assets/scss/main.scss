@@ -1,0 +1,8 @@
+button {
+  background-color: #fff !important;
+  @apply border border-blue-600 py-2 px-5 rounded-lg text-blue-800 hover:drop-shadow-xl;
+}
+
+h1 {
+  @apply text-lg font-bold py-5
+}
