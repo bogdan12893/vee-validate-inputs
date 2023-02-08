@@ -26,7 +26,7 @@ const props = defineProps({
 const { name } = toRefs(props);
 
 const { handleChange, errorMessage } = useField(name, undefined, {
-  type: 'checkbox',
+  type: 'radio',
   initialValue: props.modelValue,
   checkedValue: props.value,
   uncheckedValue: false,
@@ -37,7 +37,7 @@ const { handleChange, errorMessage } = useField(name, undefined, {
 .app-checkbox
   label(:for="inputId")
     input(
-      type="checkbox"
+      type="radio"
       :name="name"
       :id="inputId"
       :value="value"

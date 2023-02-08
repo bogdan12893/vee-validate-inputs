@@ -2,16 +2,12 @@
 import { useForm } from 'vee-validate';
 
 const form = ref({
-  email: '',
-  password: '',
-  terms: false,
+  selectedFoods: [],
 });
 
 const formSchema = computed(() => {
   return {
-    password: 'required',
-    email: 'required|email',
-    terms: 'required',
+    foods: 'required',
   };
 });
 
@@ -31,12 +27,13 @@ const handleFormSubmit = async () => {
 </script>
 
 <template lang="pug">
-.simple-form
-  h1 Simple Form
+.checkbox-form
+  h1 Checkbox Form
   form
-    AppInput(inputType="text" inputName="email" placeholder="email" v-model="form.email")
-    AppInput(inputType="password" inputName="password" placeholder="password" v-model="form.password")
-    AppCheckbox(name="terms" inputId="terms" v-model="form.terms" :value="true" text="Terms check!")
+    p Select foods:
+    AppCheckbox(name="foods" inputId="burger" v-model="form.selectedFoods" value="burger" text="burger")
+    AppCheckbox(name="foods" inputId="pizza" v-model="form.selectedFoods" value="pizza" text="pizza")
+    AppCheckbox(name="foods" inputId="pasta" v-model="form.selectedFoods" value="pasta" text="pasta")
   button(@click.prevent="handleFormSubmit" type="submit") Submit
 
   pre {{ form }}

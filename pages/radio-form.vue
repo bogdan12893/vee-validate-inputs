@@ -2,16 +2,12 @@
 import { useForm } from 'vee-validate';
 
 const form = ref({
-  email: '',
-  password: '',
-  terms: false,
+  selectedBike: '',
 });
 
 const formSchema = computed(() => {
   return {
-    password: 'required',
-    email: 'required|email',
-    terms: 'required',
+    bikes: 'required',
   };
 });
 
@@ -31,12 +27,12 @@ const handleFormSubmit = async () => {
 </script>
 
 <template lang="pug">
-.simple-form
-  h1 Simple Form
+.radio-form
+  h1 Radio Form
   form
-    AppInput(inputType="text" inputName="email" placeholder="email" v-model="form.email")
-    AppInput(inputType="password" inputName="password" placeholder="password" v-model="form.password")
-    AppCheckbox(name="terms" inputId="terms" v-model="form.terms" :value="true" text="Terms check!")
+    p Select bike style:
+    AppRadio(name="bikes" inputId="road-bike" v-model="form.selectedBike" value="road bikes" text="road bikes")
+    AppRadio(name="bikes" inputId="mtn-bike" v-model="form.selectedBike" value="mountain bikes" text="mountain bikes")
   button(@click.prevent="handleFormSubmit" type="submit") Submit
 
   pre {{ form }}
