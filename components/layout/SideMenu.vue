@@ -6,6 +6,7 @@
   NuxtLink(to="/simple-form") Simple Form
   NuxtLink(to="/checkbox-form") Checkbox Form
   NuxtLink(to="/radio-form") Radio Form
+  NuxtLink(to="/file-form") File Form
 </template>
 
 <style lang="scss" scoped>

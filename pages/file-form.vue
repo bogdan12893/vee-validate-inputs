@@ -2,22 +2,22 @@
 import { useForm } from 'vee-validate';
 
 const form = reactive({
-  email: '',
-  password: '',
-  terms: false,
+  file: null,
 });
 
 const formSchema = computed(() => {
   return {
-    password: 'required',
-    email: 'required|email',
-    terms: 'required',
+    fileInput: 'required',
   };
 });
 
 const { validate } = useForm({
   validationSchema: formSchema,
 });
+
+const getSelectedFile = (file) => {
+  form.file = file;
+};
 
 const handleFormSubmit = async () => {
   const validator = await validate();
@@ -31,12 +31,10 @@ const handleFormSubmit = async () => {
 </script>
 
 <template lang="pug">
-.simple-form
-  h1 Simple Form
+.file-form
+  h1 File Form
   form
-    AppInput(inputType="text" inputName="email" placeholder="email" v-model="form.email")
-    AppInput(inputType="password" inputName="password" placeholder="password" v-model="form.password")
-    AppCheckbox(name="terms" inputId="terms" v-model="form.terms" :value="true" text="Terms check!")
+    AppFileInput(inputName="fileInput" @selectedFile="getSelectedFile")
   button(@click.prevent="handleFormSubmit" type="submit") Submit
 
   pre {{ form }}
