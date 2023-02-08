@@ -3,12 +3,12 @@ import { useField } from 'vee-validate';
 
 const props = defineProps({
   modelValue: {
-    type: Boolean,
-    default: false,
+    type: null,
+    default: null,
   },
   value: {
-    type: Boolean,
-    default: false,
+    type: null,
+    default: null,
   },
   name: {
     type: String,
@@ -19,8 +19,9 @@ const props = defineProps({
     default: '',
   },
 });
+const { name } = toRefs(props);
 
-const { handleChange, errorMessage } = useField(props.name, undefined, {
+const { handleChange, errorMessage } = useField(name, undefined, {
   type: 'checkbox',
   initialValue: props.modelValue,
   checkedValue: props.value,
@@ -36,7 +37,6 @@ const { handleChange, errorMessage } = useField(props.name, undefined, {
       :name="name"
       :id="name"
       :value="value"
-      :checked="modelValue"
       @input="handleChange(value)"
     )
     span.ml-2 {{ text }}

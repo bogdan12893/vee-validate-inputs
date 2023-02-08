@@ -4,7 +4,8 @@ import { useForm } from 'vee-validate';
 const form = ref({
   email: '',
   password: '',
-  terms: true,
+  terms: false,
+  selectedFoods: [],
 });
 
 const formSchema = computed(() => {
@@ -12,6 +13,7 @@ const formSchema = computed(() => {
     password: 'required',
     email: 'required|email',
     terms: 'required',
+    foods: 'required',
   };
 });
 
@@ -38,6 +40,10 @@ const handleFormSubmit = async () => {
     AppInput(inputType="text" inputName="email" placeholder="email" v-model="form.email")
     AppInput(inputType="password" inputName="password" placeholder="password" v-model="form.password")
     AppCheckbox(name="terms" v-model="form.terms" :value="true" text="Terms check!")
+    p Select foods:
+    AppCheckbox(name="foods" v-model="form.selectedFoods" value="burger" text="burger")
+    AppCheckbox(name="foods" v-model="form.selectedFoods" value="pizza" text="pizza")
+    AppCheckbox(name="foods" v-model="form.selectedFoods" value="pasta" text="pasta")
   button(@click.prevent="handleFormSubmit" type="submit") Submit
 
   pre {{ form }}
