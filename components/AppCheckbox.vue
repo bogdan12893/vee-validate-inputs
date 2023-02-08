@@ -3,24 +3,28 @@ import { useField } from 'vee-validate';
 
 const props = defineProps({
   modelValue: {
-    type: null,
+    type: Boolean,
+    default: false,
+  },
+  value: {
+    type: Boolean,
     default: false,
   },
   name: {
     type: String,
     default: '',
   },
-  value: {
-    type: Boolean,
-    default: false,
+  text: {
+    type: String,
+    default: '',
   },
 });
 
-const { checked, handleChange, errorMessage } = useField(props.name, undefined, {
+const { handleChange, errorMessage } = useField(props.name, undefined, {
   type: 'checkbox',
-  valueProp: props.value,
+  initialValue: props.modelValue,
+  checkedValue: props.value,
   uncheckedValue: false,
-  checkedValue: true,
 });
 </script>
 
@@ -32,13 +36,12 @@ const { checked, handleChange, errorMessage } = useField(props.name, undefined, 
       :name="name"
       :id="name"
       :value="value"
-      @input="handleChange($event.target.value)"
+      :checked="modelValue"
+      @input="handleChange(value)"
     )
-    span.ml-2 Please check this box {{ checked }}
+    span.ml-2 {{ text }}
   .error {{ errorMessage }}
 </template>
-
-<style lang="scss" scoped></style>
 
 <style lang="scss" scoped>
 .app-checkbox {

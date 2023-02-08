@@ -6,3 +6,7 @@ button {
 h1 {
   @apply text-lg font-bold py-5
 }
+
+pre {
+  @apply border border-black my-5 p-2 w-1/2 overflow-scroll;
+}
