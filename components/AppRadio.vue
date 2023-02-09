@@ -25,7 +25,7 @@ const props = defineProps({
 });
 const { name } = toRefs(props);
 
-const { handleChange, errorMessage } = useField(name, undefined, {
+const { handleChange, errorMessage, checked } = useField(name, undefined, {
   type: 'radio',
   initialValue: props.modelValue,
   checkedValue: props.value,
@@ -42,6 +42,7 @@ const { handleChange, errorMessage } = useField(name, undefined, {
       :id="inputId"
       :value="value"
       @input="handleChange(value)"
+      :checked="checked"
     )
     span.ml-2 {{ text }}
   .error {{ errorMessage }}
