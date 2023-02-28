@@ -11,6 +11,9 @@ Examples provided with validation for:
 - input type - radio
 - input type - file
 
+## Extra:
+- scroll to input with error
+
 ## Nuxt 3
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
